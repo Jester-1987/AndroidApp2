@@ -12,13 +12,19 @@ import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.triosng2024.timmiesrunandroid.R
 import com.triosng2024.timmiesrunandroid.databinding.FragmentMainBinding
+import models.TaskList
 
-class MainFragment : Fragment() {
+class MainFragment(val clickListener: MainFragmentInteractionListener) : Fragment(),
+ListSelectionRecyclerViewAdapter.ListSelectionRecyclerViewClickListener{
+
+    interface MainFragmentInteractionListener {
+        fun listItemTapped(list: TaskList)
+    }
 
     private lateinit var binding: FragmentMainBinding
 
     companion object {
-        fun newInstance() = MainFragment()
+        fun newInstance(clickListener: MainFragmentInteractionListener) = MainFragment(clickListener)
     }
 
     private lateinit var viewModel: MainViewModel
@@ -43,7 +49,7 @@ class MainFragment : Fragment() {
             .get(MainViewModel::class.java)
 
         val recyclerViewAdapter =
-            ListSelectionRecyclerViewAdapter(viewModel.lists)
+            ListSelectionRecyclerViewAdapter(viewModel.lists, this)
 
         binding.listsRecyclerview.adapter = recyclerViewAdapter
 
@@ -53,5 +59,10 @@ class MainFragment : Fragment() {
 
         return binding.root
     }
+
+    override fun listItemClicked(list: TaskList) {
+        clickListener.listItemTapped(list)
+    }
+
 
 }

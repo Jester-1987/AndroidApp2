@@ -2,7 +2,7 @@ package com.triosng2024.timmiesrunandroid.ui.main
 
 import android.content.SharedPreferences
 import androidx.lifecycle.ViewModel
-import com.triosng2024.timmiesrunandroid.TaskList
+import models.TaskList
 
 class MainViewModel(private val sharedPreferences: SharedPreferences) : ViewModel() {
     lateinit var onListAdded: (() -> Unit)

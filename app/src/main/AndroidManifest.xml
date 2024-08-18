@@ -13,10 +13,14 @@
         android:theme="@style/Theme.TimmiesRunAndroid"
         tools:targetApi="31">
         <activity
-            android:name="com.triosng2024.timmiesrunandroid.MainActivity"
+            android:name=".ui.main.ListDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
