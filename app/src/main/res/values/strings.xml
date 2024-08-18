@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">TimmiesRunAndroid</string>
+    <string name="name_of_list">What menu item would you like to add?</string>
+    <string name="create_list">Add to list</string>
 </resources>
